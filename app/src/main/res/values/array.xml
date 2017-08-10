@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="item_services">
+        <item>Dry Cleaning</item>
+        <item>Handwash</item>
+        <item>Wash by Load</item>
+    </string-array>
+
+    <array name="service_image">
+        <item>@drawable/mesin</item>
+        <item>@drawable/sabun</item>
+        <item>@drawable/bag</item>
+    </array>
+
+    <string-array name="food_name">
+        <item>Main Dishes</item>
+        <item>Desert</item>
+        <item>Drinks</item>
+    </string-array>
+
+    <array name="food_image">
+        <item>@drawable/maindish</item>
+        <item>@drawable/desert</item>
+        <item>@drawable/drink</item>
+    </array>
+</resources>
