@@ -2,7 +2,7 @@
 <resources>
     <string-array name="item_services">
         <item>Dry Cleaning</item>
-        <item>Handwash</item>
+        <item>Carpet Cleaning</item>
         <item>Wash by Load</item>
     </string-array>
 
