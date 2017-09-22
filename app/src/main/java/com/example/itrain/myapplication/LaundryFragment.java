@@ -19,6 +19,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,15 +39,26 @@ import java.util.List;
  */
 public class LaundryFragment extends Fragment {
 
+    String url = "https://vast-dusk-18724.herokuapp.com/api/service";
+    private static List<JSONObject> jsonArray = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        RequestQueue service = Volley.newRequestQueue(getActivity());
+
         RecyclerView recyclerView = (RecyclerView)inflater.inflate(R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), new ContentAdapter.OnItemClickListener() {
+        final ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), new ContentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(getActivity(), MapActivity.class);
+                try {
+                    intent.putExtra("service_id", jsonArray.get(position).getInt("service_id"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 startActivity(intent);
             }
         });
@@ -43,6 +66,32 @@ public class LaundryFragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Log.d("debug", "here");
+
+        JsonArrayRequest serviceRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        jsonArray.add(response.getJSONObject(i));
+                        Log.d("debug", jsonArray.toString());
+                    }
+                    adapter.notifyDataSetChanged();
+                } catch (JSONException e) {
+                    Log.d("error", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+        Log.d("error",error.toString());
+                    }
+                });
+        service.add(serviceRequest);
         return recyclerView;
     }
 
@@ -57,6 +106,7 @@ public class LaundryFragment extends Fragment {
             image = (ImageView) itemView.findViewById(R.id.card_image);
             text = (TextView) itemView.findViewById(R.id.card_text);
         }
+
         public void bind(final int position, final ContentAdapter.OnItemClickListener listener){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -69,18 +119,13 @@ public class LaundryFragment extends Fragment {
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
 
-        public interface OnItemClickListener{
-            void onItemClick(int position);
-        }
 
-        private final OnItemClickListener listener;
-        private final String[] service;
-        private final Drawable[] serviceImage;
+        Context context;
 
         public ContentAdapter(Context context, OnItemClickListener listener) {
-
+            this.context = context;
             this.listener = listener;
-            Resources resouces = context.getResources();
+            /*Resources resouces = context.getResources();
             service = resouces.getStringArray(R.array.item_services);
             TypedArray picServices = resouces.obtainTypedArray(R.array.service_image);
             serviceImage = new Drawable[picServices.length()];
@@ -88,8 +133,13 @@ public class LaundryFragment extends Fragment {
                 for (int i = 0; i<serviceImage.length; i++){
                     serviceImage[i] = picServices.getDrawable(i);
                 }
-            picServices.recycle();
+            picServices.recycle();*/
         }
+
+        public int getIdForObject(int position) throws JSONException {
+            return jsonArray.get(position).getInt("service_id");
+        }
+
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
@@ -97,14 +147,33 @@ public class LaundryFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
+
+            try {
+                holder.text.setText(jsonArray.get(position).getString("service_title"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             holder.bind(position, listener);
-            holder.image.setImageDrawable(serviceImage[position % serviceImage.length]);
-            holder.text.setText(service[position % service.length]);
+            //holder.image.setImageDrawable(serviceImage[position % serviceImage.length]);
+            //holder.text.setText(service[position % service.length]);
         }
+
+        public void addJsonObject(JSONObject jsonObject) {
+            jsonArray.add(jsonObject);
+        }
+
+        public interface OnItemClickListener{
+            void onItemClick(int position);
+        }
+
+        private final OnItemClickListener listener;
+        //private final String[] service;
+       // private final Drawable[] serviceImage;
 
         @Override
         public int getItemCount() {
-            return service.length;
+            return jsonArray.size();
         }
     }
 }

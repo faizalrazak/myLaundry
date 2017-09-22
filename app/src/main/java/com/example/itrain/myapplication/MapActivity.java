@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,7 +38,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         private GoogleMap mMap;
         LocationManager locationManager;
         String provider;
-        private EditText location;
+        private EditText locationEdittext;
 
         @Override
         protected void onResume() {
@@ -64,13 +65,19 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_map);
 
+            final int service_id = getIntent().getIntExtra("service_id", 0);
+            Log.d("debug", service_id + "");
+
+            Toast.makeText(MapActivity.this, service_id + "", Toast.LENGTH_LONG).show();
 
             Button button = (Button)findViewById(R.id.button);
-            location = (EditText) findViewById(R.id.location);
+            locationEdittext = (EditText) findViewById(R.id.location);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(MapActivity.this, DateTimeActivity.class);
+                    intent.putExtra("location", locationEdittext.getText().toString());
+                    intent.putExtra("service_id", service_id);
                     startActivity(intent);
                 }
             });

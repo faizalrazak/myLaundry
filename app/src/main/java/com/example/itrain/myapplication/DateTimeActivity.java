@@ -3,6 +3,8 @@ package com.example.itrain.myapplication;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+
+import java.text.DateFormat;
 import java.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +14,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class DateTimeActivity extends AppCompatActivity implements View.OnClickListener{
 
+    String location;
+    int service_id;
     Button btnDatePickup, btnTimePickup, btnDateDelivery, btnTimeDelivery, doneButton;
     EditText pickupDate, pickupTime, deliveryDate, deliveryTime;
     private int pYear, pMonth, pDay, pHour, pMinute;
@@ -39,12 +44,31 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
         btnDateDelivery.setOnClickListener(this);
         btnTimeDelivery.setOnClickListener(this);
         doneButton.setOnClickListener(this);
+
+
+
+
+        location = getIntent().getStringExtra("location");
+        service_id = getIntent().getIntExtra("service_id", 0);
+
+        Toast.makeText(getApplication(), location, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplication(), service_id + "" , Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onClick(View view) {
         if(view == doneButton){
+            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+            String pickup = dateFormat.format(pickupDate.getText().toString());
+            String delivery = dateFormat.format(deliveryDate.getText().toString());
+
             Intent intent = new Intent(DateTimeActivity.this, SummaryActivity.class);
+            intent.putExtra("pickupDate", "01/01/2017");
+            intent.putExtra("pickupTime", pickupTime.getText().toString());
+            intent.putExtra("deliveryDate", "10/01/2017");
+            intent.putExtra("deliveryTime", deliveryTime.getText().toString());
+            intent.putExtra("service_id", service_id);
+            intent.putExtra("location", location);
             startActivity(intent);
         }
 

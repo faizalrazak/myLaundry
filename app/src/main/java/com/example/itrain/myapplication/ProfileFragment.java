@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
 
         final ListView listview = (ListView) view.findViewById(R.id.listview);
         String[] values = new String[]{"Edit Profile", "My Order", "Message",
-                "News & Promotion"};
+                "News & Promotion", "Register me"};
 
         final ArrayList<String> list = new ArrayList<String>();
             for (int i = 0; i < values.length; ++i) {
@@ -74,6 +74,9 @@ public class ProfileFragment extends Fragment {
                         Intent intent3 = new Intent(getActivity(), NewsPromotionActivity.class);
                         startActivity(intent3);
                         break;
+                    case 4:
+                        Intent intent4 = new Intent(getActivity(), SignupActivity.class);
+                        startActivity(intent4);
                 }
 
             }

@@ -28,16 +28,7 @@
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword"
-            android:layout_marginBottom="10dp"/>
-    </android.support.design.widget.TextInputLayout>
+    android:layout_height="wrap_content"></android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,6 +40,18 @@
             android:hint="phone no"
             android:inputType="phone"
             android:layout_marginBottom="10dp" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="address"
+            android:inputType="text"
+            android:layout_marginBottom="25dp"/>
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
