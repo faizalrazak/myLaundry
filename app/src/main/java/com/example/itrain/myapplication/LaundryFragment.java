@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +33,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.itrain.myapplication.R.id.image;
 
 
 /**
@@ -149,6 +152,8 @@ public class LaundryFragment extends Fragment {
         public void onBindViewHolder(ViewHolder holder, int position) {
 
             try {
+               Log.d("debug",jsonArray.get(position).getString("service_image"));
+                Picasso.with(context).load(jsonArray.get(position).getString("service_image")).into(holder.image);
                 holder.text.setText(jsonArray.get(position).getString("service_title"));
 
             } catch (JSONException e) {

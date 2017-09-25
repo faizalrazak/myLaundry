@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(new LaundryFragment(), "Laundry");
-        mSectionsPagerAdapter.addFragment(new CafeFragment(), "Cafe");
+        //mSectionsPagerAdapter.addFragment(new CafeFragment(), "Cafe");
         mSectionsPagerAdapter.addFragment(new ProfileFragment(), "Profile");
 
         // Set up the ViewPager with the sections adapter.

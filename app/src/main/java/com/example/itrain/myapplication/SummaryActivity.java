@@ -83,10 +83,12 @@ public class SummaryActivity extends AppCompatActivity {
                         params.put("service_id", Integer.toString(service_id));
                         params.put("specific_location", location);
                         params.put("location", location);
-                        params.put("pickup", pickupDate);
+                        params.put("pickup", pickupDate + " " + pickupTime);
                         params.put("pickup_time", pickupTime);
-                        params.put("delivery", deliveryDate);
-                        params.put("delivery_time", deliveryTime);
+                        params.put("delivery", "2017-12-10 11:45:00");
+                        params.put("delivery_time", deliveryTime + " " + deliveryTime);
+                        params.put("customer_id", "21");
+                        params.put("status_id", "1");
                         Log.d("debug", params.toString());
 
                         return params;

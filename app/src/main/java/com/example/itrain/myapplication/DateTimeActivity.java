@@ -58,14 +58,16 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if(view == doneButton){
-            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-            String pickup = dateFormat.format(pickupDate.getText().toString());
-            String delivery = dateFormat.format(deliveryDate.getText().toString());
+            //DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+            //String pickup = dateFormat.format(pickupDate.getText().toString());
+            //String delivery = dateFormat.format(deliveryDate.getText().toString());
+
+            //Toast.makeText(getApplicationContext(), pickup.toString(), Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(DateTimeActivity.this, SummaryActivity.class);
-            intent.putExtra("pickupDate", "01/01/2017");
+            intent.putExtra("pickupDate", pickupDate.getText().toString());
             intent.putExtra("pickupTime", pickupTime.getText().toString());
-            intent.putExtra("deliveryDate", "10/01/2017");
+            intent.putExtra("deliveryDate", deliveryDate.getText().toString());
             intent.putExtra("deliveryTime", deliveryTime.getText().toString());
             intent.putExtra("service_id", service_id);
             intent.putExtra("location", location);
@@ -89,8 +91,8 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
-
-                            pickupDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            pickupDate.setText( year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                            //pickupDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }
                     }, pYear, pMonth, pDay);
@@ -113,8 +115,8 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
-
-                            deliveryDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            //deliveryDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            deliveryDate.setText( year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
 
                         }
                     }, pYear, pMonth, pDay);
