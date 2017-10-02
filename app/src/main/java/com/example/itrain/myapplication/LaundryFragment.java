@@ -102,12 +102,14 @@ public class LaundryFragment extends Fragment {
 
         public ImageView image;
         public TextView text;
+        public TextView price;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.fragment_laundry, parent, false));
 
             image = (ImageView) itemView.findViewById(R.id.card_image);
             text = (TextView) itemView.findViewById(R.id.card_text);
+            price = (TextView) itemView.findViewById(R.id.card_description);
         }
 
         public void bind(final int position, final ContentAdapter.OnItemClickListener listener){
@@ -155,6 +157,7 @@ public class LaundryFragment extends Fragment {
                Log.d("debug",jsonArray.get(position).getString("service_image"));
                 Picasso.with(context).load(jsonArray.get(position).getString("service_image")).into(holder.image);
                 holder.text.setText(jsonArray.get(position).getString("service_title"));
+                holder.price.setText(jsonArray.get(position).getString("service_price"));
 
             } catch (JSONException e) {
                 e.printStackTrace();

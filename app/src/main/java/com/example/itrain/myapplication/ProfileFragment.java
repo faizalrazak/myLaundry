@@ -41,8 +41,8 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         final ListView listview = (ListView) view.findViewById(R.id.listview);
-        String[] values = new String[]{"Edit Profile", "My Order", "Message",
-                "News & Promotion", "Register me"};
+        String[] values = new String[]{"Edit Profile", "My Order",
+                "News & Promotion"};
 
         final ArrayList<String> list = new ArrayList<String>();
             for (int i = 0; i < values.length; ++i) {
@@ -66,17 +66,11 @@ public class ProfileFragment extends Fragment {
                         Intent intent1 = new Intent(getActivity(), OrderActivity.class);
                         startActivity(intent1);
                         break;
+
                     case 2:
-                        Intent intent2 = new Intent(getActivity(), MessageActivity.class);
-                        startActivity(intent2);
-                        break;
-                    case 3:
                         Intent intent3 = new Intent(getActivity(), NewsPromotionActivity.class);
                         startActivity(intent3);
                         break;
-                    case 4:
-                        Intent intent4 = new Intent(getActivity(), SignupActivity.class);
-                        startActivity(intent4);
                 }
 
             }

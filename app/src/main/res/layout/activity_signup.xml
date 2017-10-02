@@ -84,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/button"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#101B53"
             android:padding="12dp"
             android:text="Create Account" />
 

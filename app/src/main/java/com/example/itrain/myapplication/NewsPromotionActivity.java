@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,18 +53,18 @@ public class NewsPromotionActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>()
+        JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>()
                 {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         // display response
                         Log.d("Response", response.toString());
                             try {
-                               JSONArray data = response.getJSONArray("data");
-                                for(int i=0; i<data.length(); i++) {
-                                    adapter.addJsonObject(data.getJSONObject(i));
-                                    Log.d("debug", String.valueOf(data.getJSONObject(i)));
+                               //JSONArray data = response.getJSONArray("data");
+                                for(int i=0; i<response.length(); i++) {
+                                    adapter.addJsonObject(response.getJSONObject(i));
+                                    Log.d("debug", String.valueOf(response.getJSONObject(i)));
                                 }
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
@@ -97,9 +98,9 @@ public class NewsPromotionActivity extends AppCompatActivity {
         public ViewHolder(View itemView) {
             super(itemView);
 
-            promotionImage = (ImageView) itemView.findViewById(R.id.icon);
-            promotionTitle = (TextView) itemView.findViewById(R.id.textTitle);
-            promotionDesc = (TextView) itemView.findViewById(R.id.textMessage);
+            promotionImage = (ImageView) itemView.findViewById(R.id.card_image);
+            promotionTitle = (TextView) itemView.findViewById(R.id.card_text);
+            promotionDesc = (TextView) itemView.findViewById(R.id.card_description);
 
         }
     }
@@ -118,13 +119,15 @@ public class NewsPromotionActivity extends AppCompatActivity {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_message, parent, false));
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_promotion, parent, false));
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
             try {
+                Log.d("debug",jsonArray.get(position).getString("promotion_image"));
+                Picasso.with(context).load(jsonArray.get(position).getString("promotion_image")).into(holder.promotionImage);
                 holder.promotionTitle.setText(jsonArray.get(position).getString("title"));
                 holder.promotionDesc.setText(jsonArray.get(position).getString("description"));
             } catch (JSONException e) {

@@ -6,7 +6,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".DateTimeActivity">
+    android:orientation="vertical"
+    tools:context=".DateTimeActivity"
+    android:background="#FFFFFF">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,43 +18,56 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
         android:gravity="center"
         android:layout_marginBottom="19dp"
-        android:layout_above="@+id/btn_datePick"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="280dp"
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pickDateText"
-        android:layout_marginTop="82dp"
+        android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DATE"
-        android:id="@+id/btn_datePick"
-        android:layout_alignBottom="@+id/pickDateText"
-        android:layout_toRightOf="@+id/pickDateText"
-        android:layout_alignParentEnd="true" />
+        <EditText
+            android:id="@+id/pickDateText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
 
-    <EditText
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/pickTimeText"
-        android:layout_below="@+id/pickDateText"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/btn_datePick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#101B53"
+            android:text="DATE"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_below="@id/layout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TIME"
-        android:id="@+id/btn_timePick"
-        android:layout_alignBaseline="@+id/pickTimeText"
-        android:layout_alignBottom="@+id/pickTimeText"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/pickDateText" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:id="@+id/pickTimeText"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="TIME"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#101B53"
+            android:id="@+id/btn_timePick" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -62,55 +77,65 @@
         android:layout_height="wrap_content"
         android:text="DELIVERY"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-        android:layout_below="@+id/btn_timePick"
-        android:layout_marginTop="86dp"
+        android:layout_below="@+id/layout2"
+        android:layout_marginTop="81dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:id="@+id/deliDateText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:ems="10"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btnTimeDeli" />
+        android:id="@+id/layout3"
+        android:layout_below="@id/textView"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/deliTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_below="@+id/btn_DateDeli"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btn_timePick" />
+        <EditText
+            android:id="@+id/deliDateText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView" />
 
-    <Button
-        android:id="@+id/btn_DateDeli"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/btnTimeDeli"
-        android:layout_alignTop="@+id/deliDateText"
-        android:layout_toEndOf="@+id/deliDateText"
-        android:text="Date" />
+        <Button
+            android:id="@+id/btn_DateDeli"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#101B53"
+            android:text="Date" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnTimeDeli"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/btn_timePick"
-        android:layout_below="@+id/btn_DateDeli"
-        android:layout_toEndOf="@+id/deliTimeText"
-        android:text="Time" />
+        android:orientation="horizontal"
+        android:layout_below="@id/layout3">
+
+        <EditText
+            android:id="@+id/deliTimeText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_DateDeli"/>
+
+        <Button
+            android:id="@+id/btnTimeDeli"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#101B53"
+            android:text="Time" />
+
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:backgroundTint="@color/button"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#101B53"
         android:text="Done"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"

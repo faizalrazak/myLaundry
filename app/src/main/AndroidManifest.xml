@@ -3,18 +3,18 @@
     package="com.example.itrain.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/iconcafe"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/laundrycafe"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+        <activity android:name=".SplashScreenActivity">
+
+            <!-- android:label="@string/app_name" -->
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,15 +36,61 @@
 
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map" />
-        <activity android:name=".DateTimeActivity" />
-        <activity android:name=".SummaryActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".OrderActivity" />
+            android:label="@string/title_activity_map"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itrain.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DateTimeActivity"
+            android:parentActivityName=".MapActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itrain.myapplication.MapActivity" />
+        </activity>
+        <activity
+            android:name=".SummaryActivity"
+            android:parentActivityName=".DateTimeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DateTimeActivity" />
+        </activity>
+        <activity android:name=".SignupActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".SignupActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SignupActivity"/>
+        </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itrain.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".OrderActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itrain.myapplication.MainActivity" />
+        </activity>
         <activity android:name=".MessageActivity" />
-        <activity android:name=".NewsPromotionActivity"></activity>
+        <activity
+            android:name=".NewsPromotionActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itrain.myapplication.MainActivity" />
+        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

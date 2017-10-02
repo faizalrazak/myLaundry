@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:elevation="5dp"
+    android:backgroundTint="#000080"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,16 +26,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:text="Order Number : "/>
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Order Number: "
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
             android:id="@+id/orderNumber"
-            android:paddingLeft="24dp"
+            android:paddingLeft="15dp"
             android:paddingRight="24dp"
             android:text="Order Number"
             style="@style/Base.TextAppearance.AppCompat.Title"/>
@@ -29,47 +46,111 @@
     </LinearLayout>
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:id="@+id/service"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:id="@+id/status"
-        android:textStyle="bold"/>
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="24dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Service             :"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="24dp"
+            android:id="@+id/service"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_height="wrap_content"
+            android:text="Status              :"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="15dp"
+            android:paddingRight="24dp"
+            android:id="@+id/status"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Pickup              :"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
             android:paddingRight="24dp"
             android:id="@+id/pickupdate"
-            android:textStyle="bold"/>
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/deliverydate"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:paddingLeft="15dp"
+            android:text="Delivery            :"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="24dp"
+            android:id="@+id/deliveryDate"
+            android:textColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-
-
-</LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

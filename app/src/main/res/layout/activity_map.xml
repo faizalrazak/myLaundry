@@ -2,17 +2,9 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="5dp"
-        android:background="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
-    </android.support.v7.widget.Toolbar>
 
     <fragment
         android:id="@+id/map"
@@ -32,7 +24,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:ems="10"
-        android:textColorHint="#201f1f"
+        android:textColorHint="#113168"
         android:hint="Specific Location"
         android:inputType="text"
         android:layout_above="@+id/button"
@@ -45,7 +37,8 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:layout_marginBottom="14dp"
-            android:backgroundTint="@color/button"
-            android:text="done" />
+            android:backgroundTint="#101B53"
+            android:text="done"
+            android:textColor="#FFFFFF"/>
     </RelativeLayout>
 </RelativeLayout>

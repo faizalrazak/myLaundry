@@ -84,6 +84,11 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 };
                 requestQueue.add(postRequest);
+
+                Toast.makeText(getApplicationContext(), "Account Created", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
 

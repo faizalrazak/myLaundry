@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Laundry</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
@@ -10,4 +10,5 @@
     <string name="service2">Handwash</string>
     <string name="service3">Wash by Load</string>
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_try">Map</string>
 </resources>

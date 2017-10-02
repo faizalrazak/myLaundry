@@ -1,6 +1,8 @@
 package com.example.itrain.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,7 +27,7 @@ import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    String url = "https://vast-dusk-18724.herokuapp.com/api/customers/21";
+    String url = "https://vast-dusk-18724.herokuapp.com/api/customers/101";
     EditText nameEdittext;
     EditText phoneEdittext;
     EditText emailEdittext;
@@ -44,7 +47,12 @@ public class EditProfileActivity extends AppCompatActivity {
         addressEdittext = (EditText) findViewById(R.id.editText2);
         sendbutton = (Button)findViewById(R.id.button2);
 
-       queue = Volley.newRequestQueue(this);
+        SharedPreferences preferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
+        final String token = preferences.getString("token","");
+
+        Log.d("here", token.toString());
+
+        queue = Volley.newRequestQueue(this);
 
 
 
@@ -66,12 +74,21 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
 
                     }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("debug", error.toString());
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("Authorization", "Bearer " + token);
+
+                return params;
+            }
+        };
 // Add the request to the RequestQueue.
         queue.add(objRequest);
 
@@ -101,6 +118,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     protected Map<String, String> getParams()
                     {
                         Map<String, String>  params = new HashMap<String, String>();
+
                         params.put("name", nameEdittext.getText().toString());
                         params.put("email", emailEdittext.getText().toString());
                         params.put("address", addressEdittext.getText().toString());

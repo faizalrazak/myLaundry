@@ -37,6 +37,8 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
@@ -100,7 +102,7 @@ public class OrderActivity extends AppCompatActivity {
             serviceTextview = (TextView) itemView.findViewById(R.id.service);
             statusTextview = (TextView) itemView.findViewById(R.id.status);
             pickupTextview = (TextView) itemView.findViewById(R.id.pickupdate);
-            deliveryTextview = (TextView) itemView.findViewById(R.id.deliverydate);
+            deliveryTextview = (TextView) itemView.findViewById(R.id.deliveryDate);
 
         }
     }

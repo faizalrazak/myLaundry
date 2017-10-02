@@ -8,12 +8,13 @@
     android:layout_marginBottom="@dimen/md_keylines"
     android:layout_marginLeft="@dimen/md_keylines"
     android:layout_marginRight="@dimen/md_keylines"
-    app:cardBackgroundColor="#00FFFFFF"
+    app:cardBackgroundColor="#FFFFFF"
     android:foreground="?attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/card_image"
@@ -27,20 +28,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_image"
-            android:layout_marginLeft="@dimen/md_keylines"
-            android:layout_marginTop="@dimen/md_keylines"
             android:layout_marginBottom="@dimen/md_keylines"
+            android:layout_marginLeft="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
-            tools:text="@string/item_services"
+            android:layout_marginTop="@dimen/md_keylines"
             android:ellipsize="end"
+            android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:singleLine="true" />
+            tools:text="@string/item_services" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/card_text"
+            android:layout_below="@+id/card_text"
+            android:paddingRight="3dp"
+            android:text="RM"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <TextView
             android:id="@+id/card_description"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView14"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_alignEnd="@+id/card_text"
+            android:layout_toEndOf="@+id/textView14" />
+
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

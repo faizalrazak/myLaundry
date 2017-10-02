@@ -51,8 +51,8 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
         location = getIntent().getStringExtra("location");
         service_id = getIntent().getIntExtra("service_id", 0);
 
-        Toast.makeText(getApplication(), location, Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplication(), service_id + "" , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplication(), location, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplication(), service_id + "" , Toast.LENGTH_LONG).show();
     }
 
     @Override
